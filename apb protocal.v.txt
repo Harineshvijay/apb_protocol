@@ -1,0 +1,22 @@
+-> PCLK>
+->PRESEAT:SYNCRONOSED RESET
+->PADR:apb can only have [31:0] as adder value
+->PDATA:DATA can 8or16or 32 bits
+->pwrite: write =1
+->pstb:it can have only[3:0] because it is used to find how many bits of data is valid that means these add is divided into 4 parts 0-7&8-15&16-23&23-31 if all are 1 then it is has full address
+->psel:used to select the alave
+->peneble:
+->pread:read=1
+->pready: it is indicated from slave to masrter that it is ready to recive data
+->pslave error :from slave no memory or any error
+->pprot->[2:0]0-prev,1-secure/nonsecoue master,2-data/control
+THERE FOUR STAGES :
+IDEAL STATE: WERE the psel and penable aree low where no transection take place
+SETUP STATE: whene psel is high and penable is low in these state we must have the pwrite high
+		and we should have getten the address (padd)and also writedata(pwdata)if writing 
+		read detailes must be low if read write details must be low
+ACCES: the penable must be high in the next clock tick after setup state at time of 
+	penable is high pready is also should be high
+
+COMPLETE TRANS : at these time transection must complete weather read or write data to are from memory
+		if there is no slaveerror
